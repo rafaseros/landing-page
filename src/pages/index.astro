@@ -1,33 +1,42 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
 import "../styles/global.css";
 ---
 
 <Layout>
-  <main
-    class="min-h-screen bg-(--bg-primary) text-(--text-primary) flex flex-col items-center justify-center p-8"
-  >
-    <!-- Toggle dark mode -->
-    <button
-      onclick="toggleTheme()"
-      class="absolute top-4 right-4 p-2 rounded-lg bg-(--bg-secondary) border border-(--border) hover:bg-(--bg-tertiary) transition-colors"
+  <Header />
+  <main class="bg-(--bg-primary)">
+    <Hero />
+
+    <!-- Secciones placeholder para que los links funcionen -->
+    <section
+      id="sobre-mi"
+      class="min-h-screen bg-(--bg-secondary) flex items-center justify-center"
     >
-      <span class="dark:hidden">🌙</span>
-      <span class="hidden dark:inline">☀️</span>
-    </button>
+      <p class="text-(--text-secondary)">Sección Sobre mí - Próximamente</p>
+    </section>
 
-    <!-- Contenido de prueba -->
-    <h1 class="font-heading text-5xl font-bold mb-4">Rafael Gallegos</h1>
-
-    <p class="font-body text-(--text-secondary) text-xl mb-8">
-      Tech Lead en Healthtech
-    </p>
-
-    <button
-      class="bg-accent hover:bg-accent-hover text-white font-body font-semibold px-6 py-3 rounded-lg transition-colors"
+    <section
+      id="experiencia"
+      class="min-h-screen bg-(--bg-primary) flex items-center justify-center"
     >
-      Contactar
-    </button>
+      <p class="text-(--text-secondary)">Sección Experiencia - Próximamente</p>
+    </section>
+
+    <section
+      id="tecnologias"
+      class="min-h-screen bg-(--bg-secondary) flex items-center justify-center"
+    >
+      <p class="text-(--text-secondary)">Sección Tecnologías - Próximamente</p>
+    </section>
+
+    <section
+      id="contacto"
+      class="min-h-screen bg-(--bg-primary) flex items-center justify-center"
+    >
+      <p class="text-(--text-secondary)">Sección Contacto - Próximamente</p>
+    </section>
   </main>
 </Layout>
-``` --- ## Probar En tu terminal, ejecuta: ``` npm run dev
