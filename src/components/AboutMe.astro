@@ -1,0 +1,75 @@
+---
+const highlights = [
+  { number: "12+", label: "Años de experiencia" },
+  { number: "7", label: "Personas en mi equipo" },
+  { number: "5", label: "Años en Clínica Foianini" },
+  { number: "4", label: "Sectores de industria" },
+];
+---
+
+<section id="sobre-mi" class="py-20 bg-(--bg-secondary)">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <p class="font-body text-accent font-medium mb-2">Conóceme</p>
+      <h2
+        class="font-heading text-3xl sm:text-4xl font-bold text-(--text-primary)"
+      >
+        Sobre mí
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Texto -->
+      <div class="space-y-6">
+        <p class="font-body text-(--text-secondary) text-lg leading-relaxed">
+          Soy un desarrollador con más de <span
+            class="text-(--text-primary) font-medium"
+            >12 años de experiencia</span
+          > en la industria tecnológica. He trabajado en diversos sectores incluyendo
+          agro, fintech, real estate y salud.
+        </p>
+
+        <p class="font-body text-(--text-secondary) text-lg leading-relaxed">
+          Actualmente lidero el equipo de desarrollo en <span
+            class="text-(--text-primary) font-medium">Clínica Foianini</span
+          >, una de las instituciones de salud más importantes de Bolivia.
+          Gestiono un equipo de 7 personas entre desarrolladores y soporte IT,
+          reportando directamente a gerencias.
+        </p>
+
+        <p class="font-body text-(--text-secondary) text-lg leading-relaxed">
+          Mi enfoque está en crear soluciones que impacten directamente la <span
+            class="text-accent font-medium">experiencia del paciente</span
+          > y la <span class="text-accent font-medium"
+            >eficiencia operativa</span
+          >. He implementado sistemas de autoagendamiento, integraciones con
+          aseguradoras, y modernizado infraestructura crítica.
+        </p>
+
+        <p class="font-body text-(--text-secondary) text-lg leading-relaxed">
+          Apasionado por la innovación tecnológica, actualmente exploro
+          aplicaciones de <span class="text-(--text-primary) font-medium"
+            >inteligencia artificial</span
+          > en el sector salud y desarrollo de productos SaaS.
+        </p>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 gap-6">
+        {
+          highlights.map((item) => (
+            <div class="bg-(--bg-primary) p-6 rounded-xl border border-(--border) text-center hover:border-accent transition-colors">
+              <p class="font-heading text-4xl sm:text-5xl font-bold text-accent mb-2">
+                {item.number}
+              </p>
+              <p class="font-body text-(--text-secondary) text-sm">
+                {item.label}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

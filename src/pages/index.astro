@@ -2,6 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Experience from "../components/Experience.astro";
+import Technologies from "../components/Technologies.astro";
+import Speaker from "../components/Speaker.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 ---
 
@@ -9,34 +15,11 @@ import "../styles/global.css";
   <Header />
   <main class="bg-(--bg-primary)">
     <Hero />
-
-    <!-- Secciones placeholder para que los links funcionen -->
-    <section
-      id="sobre-mi"
-      class="min-h-screen bg-(--bg-secondary) flex items-center justify-center"
-    >
-      <p class="text-(--text-secondary)">Sección Sobre mí - Próximamente</p>
-    </section>
-
-    <section
-      id="experiencia"
-      class="min-h-screen bg-(--bg-primary) flex items-center justify-center"
-    >
-      <p class="text-(--text-secondary)">Sección Experiencia - Próximamente</p>
-    </section>
-
-    <section
-      id="tecnologias"
-      class="min-h-screen bg-(--bg-secondary) flex items-center justify-center"
-    >
-      <p class="text-(--text-secondary)">Sección Tecnologías - Próximamente</p>
-    </section>
-
-    <section
-      id="contacto"
-      class="min-h-screen bg-(--bg-primary) flex items-center justify-center"
-    >
-      <p class="text-(--text-secondary)">Sección Contacto - Próximamente</p>
-    </section>
+    <AboutMe />
+    <Experience />
+    <Technologies />
+    <Speaker />
+    <Contact />
   </main>
+  <Footer />
 </Layout>

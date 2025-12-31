@@ -1,0 +1,120 @@
+---
+const talks = [
+  {
+    title: "Agentes Agentic para la toma de decisiones en sector salud",
+    event: "Charla técnica",
+    year: "2025",
+    description:
+      "Exploración de cómo los agentes de IA pueden asistir en la toma de decisiones clínicas y administrativas en instituciones de salud.",
+    topics: [
+      "Inteligencia Artificial",
+      "Healthtech",
+      "Toma de decisiones",
+      "Agentes autónomos",
+    ],
+  },
+];
+
+const interests = [
+  "Inteligencia Artificial aplicada a salud",
+  "Arquitectura de software",
+  "Liderazgo de equipos técnicos",
+  "Transformación digital",
+  "Desarrollo de productos SaaS",
+];
+---
+
+<section id="speaker" class="py-20 bg-(--bg-primary)">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <p class="font-body text-accent font-medium mb-2">
+        Compartiendo conocimiento
+      </p>
+      <h2
+        class="font-heading text-3xl sm:text-4xl font-bold text-(--text-primary)"
+      >
+        Speaker & Charlas
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Charlas -->
+      <div>
+        <h3 class="font-heading text-xl font-bold text-(--text-primary) mb-6">
+          Charlas realizadas
+        </h3>
+
+        <div class="space-y-6">
+          {
+            talks.map((talk) => (
+              <div class="bg-(--bg-secondary) p-6 rounded-xl border border-(--border) hover:border-accent transition-colors">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="px-2 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full">
+                    {talk.year}
+                  </span>
+                  <span class="text-sm text-(--text-secondary) font-body">
+                    {talk.event}
+                  </span>
+                </div>
+
+                <h4 class="font-heading text-lg font-bold text-(--text-primary) mb-3">
+                  {talk.title}
+                </h4>
+
+                <p class="font-body text-(--text-secondary) text-sm mb-4">
+                  {talk.description}
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  {talk.topics.map((topic) => (
+                    <span class="px-2 py-1 text-xs font-body bg-(--bg-primary) text-(--text-secondary) rounded border border-(--border)">
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- CTA para charlas -->
+        <div
+          class="mt-6 p-4 bg-(--bg-secondary) rounded-lg border border-dashed border-(--border)"
+        >
+          <p class="font-body text-sm text-(--text-secondary)">
+            ¿Interesado en que participe como speaker en tu evento?
+            <a href="#contacto" class="text-accent hover:underline font-medium"
+              >Contáctame</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <!-- Áreas de interés -->
+      <div>
+        <h3 class="font-heading text-xl font-bold text-(--text-primary) mb-6">
+          Áreas de interés
+        </h3>
+
+        <p class="font-body text-(--text-secondary) mb-6">
+          Temas sobre los que me apasiona aprender, investigar y compartir con
+          la comunidad:
+        </p>
+
+        <div class="space-y-3">
+          {
+            interests.map((interest, index) => (
+              <div class="flex items-center gap-4 p-4 bg-(--bg-secondary) rounded-lg border border-(--border) hover:border-accent transition-colors group">
+                <div class="w-10 h-10 flex items-center justify-center bg-accent/10 text-accent rounded-lg font-heading font-bold group-hover:bg-accent group-hover:text-white transition-colors">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <span class="font-body text-(--text-primary)">{interest}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

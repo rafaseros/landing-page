@@ -1,0 +1,96 @@
+---
+const categories = [
+  {
+    name: "Backend",
+    techs: [
+      { name: "PHP", level: 95 },
+      { name: "Laravel", level: 90 },
+      { name: "Genexus", level: 85 },
+    ],
+  },
+  {
+    name: "Bases de Datos",
+    techs: [
+      { name: "MySQL", level: 90 },
+      { name: "PostgreSQL", level: 85 },
+    ],
+  },
+  {
+    name: "Frontend",
+    techs: [
+      { name: "JavaScript", level: 80 },
+      { name: "HTML/CSS", level: 85 },
+      { name: "React", level: 70 },
+      { name: "Angular", level: 65 },
+    ],
+  },
+  {
+    name: "DevOps & Herramientas",
+    techs: [
+      { name: "Docker", level: 75 },
+      { name: "Git", level: 85 },
+      { name: "Linux", level: 70 },
+    ],
+  },
+  {
+    name: "Mobile",
+    techs: [
+      { name: "Android", level: 70 },
+    ],
+  },
+  {
+    name: "Otros",
+    techs: [
+      { name: "WordPress", level: 80 },
+      { name: "REST APIs", level: 90 },
+      { name: "Integraciones B2B", level: 85 },
+    ],
+  },
+];
+---
+
+<section id="tecnologias" class="py-20 bg-(--bg-secondary)">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <p class="font-body text-accent font-medium mb-2">Mis herramientas</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-(--text-primary)">
+        Stack Tecnológico
+      </h2>
+    </div>
+
+    <!-- Grid de categorías -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {categories.map((category) => (
+        <div class="bg-(--bg-primary) p-6 rounded-xl border border-(--border) hover:border-accent transition-colors">
+          
+          <!-- Título categoría -->
+          <h3 class="font-heading text-lg font-bold text-(--text-primary) mb-6 pb-2 border-b border-(--border)">
+            {category.name}
+          </h3>
+
+          <!-- Tecnologías -->
+          <div class="space-y-4">
+            {category.techs.map((tech) => (
+              <div>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="font-body text-sm text-(--text-primary)">{tech.name}</span>
+                  <span class="font-body text-xs text-(--text-secondary)">{tech.level}%</span>
+                </div>
+                <div class="h-2 bg-(--bg-secondary) rounded-full overflow-hidden">
+                  <div 
+                    class="h-full bg-accent rounded-full transition-all duration-500"
+                    style={`width: ${tech.level}%`}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

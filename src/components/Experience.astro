@@ -1,0 +1,196 @@
+---
+const experiences = [
+  {
+    title: "Líder de Desarrollo",
+    company: "Clínica Foianini SRL",
+    location: "Santa Cruz, Bolivia",
+    period: "Dic 2020 - Presente",
+    current: true,
+    description: "Lidero equipo de 7 personas (5 desarrolladores + 2 soporte IT). Reporte directo a gerencias con participación en decisiones estratégicas de tecnología.",
+    achievements: [
+      "Sistema de llamado a pacientes para mejorar flujo de atención",
+      "Tótem de autoagendamiento para gestión autónoma de citas",
+      "Integración con aseguradoras Alianza y Bisa (validación en tiempo real)",
+      "Modernización del sistema de reportería de almacenes",
+      "Estandarización de ambiente de desarrollo con Docker",
+    ],
+    tech: ["PHP Laravel", "MySQL", "PostgreSQL", "Docker", "Genexus"],
+  },
+  {
+    title: "Soporte IT",
+    company: "Dresco / Nexcar",
+    location: "Santa Cruz, Bolivia",
+    period: "Ago 2020 - Nov 2020",
+    current: false,
+    description: "Montaje de equipos de cómputo y redes para oficina de consultoría.",
+    achievements: [],
+    tech: ["Redes", "Hardware"],
+  },
+  {
+    title: "Operador de Sistemas",
+    company: "Mi Vivienda SRL",
+    location: "Santa Cruz, Bolivia",
+    period: "Jun 2019 - Ago 2020",
+    current: false,
+    description: "Operador del sistema para gestión y venta de terrenos. Responsable de caja y depósitos bancarios.",
+    achievements: [
+      "Manejo de cartera y sistema de caja",
+      "Apoyo en tareas administrativas",
+    ],
+    tech: ["Windows", "Sistemas administrativos"],
+  },
+  {
+    title: "Desarrollador FreeLancer",
+    company: "Independiente",
+    location: "Santa Cruz, Bolivia",
+    period: "Jul 2016 - May 2019",
+    current: false,
+    description: "Análisis y desarrollo de aplicaciones móviles y web para diversos clientes.",
+    achievements: [
+      "Aplicaciones Android nativas",
+      "Sitios web con WordPress",
+      "Soporte a sistemas en Angular y React",
+    ],
+    tech: ["Android", "WordPress", "Angular", "React"],
+  },
+  {
+    title: "Desarrollador",
+    company: "MSM",
+    location: "Santa Cruz, Bolivia",
+    period: "Mar 2015 - May 2016",
+    current: false,
+    description: "Desarrollo de sistemas para Empresa Agripac en el sector agrícola.",
+    achievements: [
+      "Sistema de monitoreo de cultivos de semillas",
+      "Sistema de Laboratorio de Semillas",
+      "Seguimiento y aplicación de tratamientos para INIAF",
+    ],
+    tech: ["Desarrollo web", "Bases de datos"],
+  },
+  {
+    title: "Programador",
+    company: "InteCruz",
+    location: "Santa Cruz, Bolivia",
+    period: "Oct 2012 - Jul 2014",
+    current: false,
+    description: "Desarrollo y mejora de sistemas web para múltiples empresas.",
+    achievements: [
+      "Sistemas para Rodagro, Bugs, Tesorería Municipal",
+      "Desarrollo de aplicaciones Android",
+      "Análisis de sistemas y soporte",
+    ],
+    tech: ["PHP", "Android", "MySQL"],
+  },
+  {
+    title: "Maquetador Web",
+    company: "Jireh Group",
+    location: "Santa Cruz, Bolivia",
+    period: "Abr 2012 - Ago 2012",
+    current: false,
+    description: "Maquetación de sitios web dinámicos para clientes extranjeros.",
+    achievements: [],
+    tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+  },
+  {
+    title: "Practicante",
+    company: "DataSoft SRL",
+    location: "Santa Cruz, Bolivia",
+    period: "Ene 2012 - Mar 2012",
+    current: false,
+    description: "Desarrollador de sistemas web. Soporte del sistema SAIR para Rodagro.",
+    achievements: [
+      "Sistema de Venta, Inventario y Gestión",
+    ],
+    tech: ["PHP", "MySQL"],
+  },
+];
+---
+
+<section id="experiencia" class="py-20 bg-(--bg-primary)">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <p class="font-body text-accent font-medium mb-2">Mi trayectoria</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-(--text-primary)">
+        Experiencia Profesional
+      </h2>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      
+      <!-- Línea vertical -->
+      <div class="absolute left-0 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-(--border)"></div>
+
+      <!-- Items -->
+      <div class="space-y-12">
+        {experiences.map((exp, index) => (
+          <div class={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+            
+            <!-- Dot -->
+            <div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-accent border-4 border-(--bg-primary)"></div>
+            
+            <!-- Content -->
+            <div class={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'} pl-8 md:pl-0`}>
+              <div class={`bg-(--bg-secondary) p-6 rounded-xl border border-(--border) hover:border-accent transition-colors ${index % 2 === 0 ? 'md:ml-auto' : ''}`}>
+                
+                <!-- Header -->
+                <div class={`flex flex-wrap items-center gap-2 mb-2 ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
+                  {exp.current && (
+                    <span class="px-2 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full">
+                      Actual
+                    </span>
+                  )}
+                  <span class="text-sm text-(--text-secondary) font-body">
+                    {exp.period}
+                  </span>
+                </div>
+
+                <!-- Title -->
+                <h3 class="font-heading text-xl font-bold text-(--text-primary) mb-1">
+                  {exp.title}
+                </h3>
+                
+                <p class="font-body text-accent font-medium mb-3">
+                  {exp.company} <span class="text-(--text-secondary) font-normal">• {exp.location}</span>
+                </p>
+
+                <!-- Description -->
+                <p class="font-body text-(--text-secondary) text-sm mb-4">
+                  {exp.description}
+                </p>
+
+                <!-- Achievements -->
+                {exp.achievements.length > 0 && (
+                  <ul class={`space-y-1 mb-4 ${index % 2 === 0 ? 'md:text-left' : ''}`}>
+                    {exp.achievements.map((achievement) => (
+                      <li class="font-body text-sm text-(--text-secondary) flex items-start gap-2">
+                        <span class="text-accent mt-1">•</span>
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <!-- Tech -->
+                <div class={`flex flex-wrap gap-2 ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
+                  {exp.tech.map((t) => (
+                    <span class="px-2 py-1 text-xs font-body bg-(--bg-primary) text-(--text-secondary) rounded border border-(--border)">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Spacer for alternating layout -->
+            <div class="hidden md:block md:w-1/2"></div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
