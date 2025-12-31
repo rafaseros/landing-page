@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* Configurar dark mode con clase */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tema de colores y fuentes */
+@theme {
+  /* Fuentes */
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Colores de acento (compartidos) */
+  --color-accent: #DC2626;
+  --color-accent-hover: #EF4444;
+  --color-accent-active: #B91C1C;
+  --color-accent-light: #EF4444;
+  --color-accent-light-hover: #F87171;
+
+  /* Light mode - fondos */
+  --color-light-bg: #FFFFFF;
+  --color-light-bg-secondary: #F8FAFC;
+  --color-light-bg-tertiary: #F1F5F9;
+
+  /* Light mode - textos */
+  --color-light-text: #1E293B;
+  --color-light-text-secondary: #64748B;
+
+  /* Light mode - bordes */
+  --color-light-border: #E2E8F0;
+
+  /* Dark mode - fondos */
+  --color-dark-bg: #0F172A;
+  --color-dark-bg-secondary: #1E293B;
+  --color-dark-bg-tertiary: #334155;
+
+  /* Dark mode - textos */
+  --color-dark-text: #F8FAFC;
+  --color-dark-text-secondary: #94A3B8;
+
+  /* Dark mode - bordes */
+  --color-dark-border: #475569;
+}
+
+/* Variables para cambio dinámico de tema */
+:root {
+  --bg-primary: var(--color-light-bg);
+  --bg-secondary: var(--color-light-bg-secondary);
+  --bg-tertiary: var(--color-light-bg-tertiary);
+  --text-primary: var(--color-light-text);
+  --text-secondary: var(--color-light-text-secondary);
+  --border: var(--color-light-border);
+}
+
+.dark {
+  --bg-primary: var(--color-dark-bg);
+  --bg-secondary: var(--color-dark-bg-secondary);
+  --bg-tertiary: var(--color-dark-bg-tertiary);
+  --text-primary: var(--color-dark-text);
+  --text-secondary: var(--color-dark-text-secondary);
+  --border: var(--color-dark-border);
+}
+
+/* Estilos base */
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
