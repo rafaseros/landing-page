@@ -29,6 +29,8 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/rafaseros/landing-page:latest
+          build-args: |
+            PUBLIC_WEB3FORMS_KEY=${{ secrets.PUBLIC_WEB3FORMS_KEY }}
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1
