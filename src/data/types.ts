@@ -73,3 +73,30 @@ export interface Highlight {
   suffix?: string;
   displayValue: string;
 }
+
+export interface Education {
+  degree: string;
+  institution: string;
+  location: string;
+  period: string;
+  status: 'completed' | 'in-progress' | 'incomplete';
+  description?: string;
+}
+
+export interface Certification {
+  name: string;
+  issuer: string;
+  year: string;
+  url?: string;
+}
+
+export interface Language {
+  name: string;
+  level: string;
+}
+
+export interface CVMetadata {
+  title: string;
+  summary: string;
+  lastUpdated: string;
+}

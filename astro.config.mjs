@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://devrafaseros.com",
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.endsWith('/cv/') })],
   vite: {
     plugins: [tailwindcss()],
   },

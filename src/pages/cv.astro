@@ -1,0 +1,154 @@
+---
+import CvLayout from '../layouts/CvLayout.astro';
+import { cvMetadata } from '../data/cv-metadata';
+import { education } from '../data/education';
+import { experiences } from '../data/experience';
+import { technologyCategories } from '../data/technologies';
+import { certifications } from '../data/certifications';
+import { languages } from '../data/languages';
+import { talks } from '../data/talks';
+import { socialLinks, contactMethods } from '../data/social-links';
+import { siteMetadata } from '../data/site';
+
+const email = contactMethods.find(c => c.name === 'Email')?.value ?? 'devrafaseros@gmail.com';
+const linkedin = socialLinks.find(l => l.name === 'LinkedIn');
+const github = socialLinks.find(l => l.name === 'GitHub');
+
+const linkedinDisplay = linkedin?.href.replace('https://', '').replace(/\/$/, '') ?? '';
+const githubDisplay = github?.href.replace('https://', '') ?? '';
+---
+
+<CvLayout title={cvMetadata.title} description={siteMetadata.description}>
+  <!-- Nav bar: hidden in print -->
+  <nav class="cv-nav print-hidden">
+    <a href="/">← Volver al sitio</a>
+    <button class="cv-print-btn print-hidden" onclick="window.print()">Imprimir CV</button>
+  </nav>
+
+  <div class="cv-container">
+    <!-- Header -->
+    <header class="cv-header">
+      <div class="cv-name">{siteMetadata.name}</div>
+      <div class="cv-role">Tech Lead · Desarrollador de Software</div>
+      <div class="cv-contact">
+        <a href={`mailto:${email}`}>{email}</a>
+        <span class="cv-contact-separator"></span>
+        <span>Santa Cruz, Bolivia</span>
+        {linkedin && (
+          <>
+            <span class="cv-contact-separator"></span>
+            <a href={linkedin.href} target="_blank" rel="noopener noreferrer">{linkedinDisplay}</a>
+          </>
+        )}
+        {github && (
+          <>
+            <span class="cv-contact-separator"></span>
+            <a href={github.href} target="_blank" rel="noopener noreferrer">{githubDisplay}</a>
+          </>
+        )}
+      </div>
+    </header>
+
+    <!-- Perfil Profesional -->
+    <section>
+      <h2 class="cv-section-title">Perfil Profesional</h2>
+      <p class="cv-entry-description">{cvMetadata.summary}</p>
+    </section>
+
+    <!-- Educación (Harvard: first) -->
+    <section>
+      <h2 class="cv-section-title">Educación</h2>
+      {education.map((edu) => (
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-title">{edu.degree}</span>
+            <span class="cv-entry-date">{edu.period}</span>
+          </div>
+          <div class="cv-entry-subtitle">{edu.institution}</div>
+          <div class="cv-entry-location">{edu.location}</div>
+          {edu.description && (
+            <p class="cv-entry-description">{edu.description}</p>
+          )}
+        </div>
+      ))}
+    </section>
+
+    <!-- Experiencia Profesional -->
+    <section>
+      <h2 class="cv-section-title">Experiencia Profesional</h2>
+      {experiences.map((exp) => (
+        <div class="cv-entry">
+          <div class="cv-entry-header">
+            <span class="cv-entry-title">{exp.title}</span>
+            <span class="cv-entry-date">{exp.period}</span>
+          </div>
+          <div class="cv-entry-subtitle">{exp.company}</div>
+          <div class="cv-entry-location">{exp.location}</div>
+          <p class="cv-entry-description">{exp.description}</p>
+          {exp.achievements.length > 0 && (
+            <ul class="cv-entry-achievements">
+              {exp.achievements.map((achievement) => (
+                <li>{achievement}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </section>
+
+    <!-- Habilidades Técnicas -->
+    <section>
+      <h2 class="cv-section-title">Habilidades Técnicas</h2>
+      <div class="cv-skills-grid">
+        {technologyCategories.map((category) => (
+          <>
+            <span class="cv-skills-category">{category.name}:</span>
+            <span>{category.techs.map(t => t.name).join(', ')}</span>
+          </>
+        ))}
+      </div>
+    </section>
+
+    <!-- Certificaciones (conditional) -->
+    {certifications.length > 0 && (
+      <section>
+        <h2 class="cv-section-title">Certificaciones</h2>
+        {certifications.map((cert) => (
+          <div class="cv-entry">
+            <div class="cv-entry-header">
+              <span class="cv-entry-title">{cert.name}</span>
+              <span class="cv-entry-date">{cert.year}</span>
+            </div>
+            <div class="cv-entry-subtitle">{cert.issuer}</div>
+          </div>
+        ))}
+      </section>
+    )}
+
+    <!-- Idiomas -->
+    <section>
+      <h2 class="cv-section-title">Idiomas</h2>
+      <p class="cv-entry-description">
+        {languages.map((lang, i) => (
+          <span>{lang.name} ({lang.level}){i < languages.length - 1 ? ' · ' : ''}</span>
+        ))}
+      </p>
+    </section>
+
+    <!-- Charlas (conditional) -->
+    {talks.length > 0 && (
+      <section>
+        <h2 class="cv-section-title">Charlas</h2>
+        {talks.map((talk) => (
+          <div class="cv-entry">
+            <div class="cv-entry-header">
+              <span class="cv-entry-title">{talk.title}</span>
+              <span class="cv-entry-date">{talk.year}</span>
+            </div>
+            <div class="cv-entry-subtitle">{talk.event}</div>
+          </div>
+        ))}
+      </section>
+    )}
+  </div>
+</CvLayout>

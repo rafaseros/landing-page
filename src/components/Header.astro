@@ -24,6 +24,10 @@ import { navLinks } from '../data/nav-links';
             </a>
           ))
         }
+        <span class="text-[var(--text-secondary)] mx-2">|</span>
+        <a href="/cv" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] font-medium transition-colors text-sm">
+          Ver CV
+        </a>
       </div>
 
       <!-- Actions -->
@@ -94,5 +98,9 @@ import { navLinks } from '../data/nav-links';
         {link.label}
       </a>
     ))}
+    <hr class="border-[var(--border-color)] my-2" />
+    <a href="/cv" class="block py-3 text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] font-medium transition-colors text-base">
+      Ver CV
+    </a>
   </div>
 </div>
