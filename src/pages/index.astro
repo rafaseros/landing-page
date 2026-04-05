@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import AboutMe from "../components/AboutMe.astro";
 import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
 import Technologies from "../components/Technologies.astro";
 import Speaker from "../components/Speaker.astro";
 import Contact from "../components/Contact.astro";
@@ -13,10 +14,11 @@ import "../styles/global.css";
 
 <Layout>
   <Header />
-  <main class="bg-(--bg-primary)">
+  <main id="main-content" class="bg-(--bg-primary)">
     <Hero />
     <AboutMe />
     <Experience />
+    <Projects />
     <Technologies />
     <Speaker />
     <Contact />

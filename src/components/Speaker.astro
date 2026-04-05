@@ -1,27 +1,5 @@
 ---
-const talks = [
-  {
-    title: "Agentes Agentic para la toma de decisiones en sector salud",
-    event: "Charla técnica",
-    year: "2025",
-    description:
-      "Exploración de cómo los agentes de IA pueden asistir en la toma de decisiones clínicas y administrativas en instituciones de salud.",
-    topics: [
-      "Inteligencia Artificial",
-      "Healthtech",
-      "Toma de decisiones",
-      "Agentes autónomos",
-    ],
-  },
-];
-
-const interests = [
-  "Inteligencia Artificial aplicada a salud",
-  "Arquitectura de software",
-  "Liderazgo de equipos técnicos",
-  "Transformación digital",
-  "Desarrollo de productos SaaS",
-];
+import { talks, interests } from '../data/talks';
 ---
 
 <section id="speaker" class="py-20 bg-(--bg-primary)">
@@ -40,7 +18,7 @@ const interests = [
 
     <div class="grid lg:grid-cols-2 gap-12">
       <!-- Charlas -->
-      <div>
+      <div class="animate-on-scroll fade-in-left">
         <h3 class="font-heading text-xl font-bold text-(--text-primary) mb-6">
           Charlas realizadas
         </h3>
@@ -92,7 +70,7 @@ const interests = [
       </div>
 
       <!-- Áreas de interés -->
-      <div>
+      <div class="animate-on-scroll fade-in-right">
         <h3 class="font-heading text-xl font-bold text-(--text-primary) mb-6">
           Áreas de interés
         </h3>

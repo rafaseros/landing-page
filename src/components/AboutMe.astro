@@ -1,10 +1,5 @@
 ---
-const highlights = [
-  { number: "12+", label: "Años de experiencia" },
-  { number: "7", label: "Personas en mi equipo" },
-  { number: "5", label: "Años en Clínica Foianini" },
-  { number: "4", label: "Sectores de industria" },
-];
+import { highlights } from '../data/site';
 ---
 
 <section id="sobre-mi" class="py-20 bg-(--bg-secondary)">
@@ -21,7 +16,7 @@ const highlights = [
 
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <!-- Texto -->
-      <div class="space-y-6">
+      <div class="space-y-6 animate-on-scroll fade-in-left">
         <p class="font-body text-(--text-secondary) text-lg leading-relaxed">
           Soy un desarrollador con más de <span
             class="text-(--text-primary) font-medium"
@@ -56,12 +51,16 @@ const highlights = [
       </div>
 
       <!-- Stats -->
-      <div class="grid grid-cols-2 gap-6">
+      <div class="grid grid-cols-2 gap-6 animate-on-scroll">
         {
           highlights.map((item) => (
             <div class="bg-(--bg-primary) p-6 rounded-xl border border-(--border) text-center hover:border-accent transition-colors">
-              <p class="font-heading text-4xl sm:text-5xl font-bold text-accent mb-2">
-                {item.number}
+              <p
+                class="font-heading text-4xl sm:text-5xl font-bold text-accent mb-2"
+                data-counter-target={String(item.numericValue)}
+                data-counter-suffix={item.suffix || ''}
+              >
+                0
               </p>
               <p class="font-body text-(--text-secondary) text-sm">
                 {item.label}

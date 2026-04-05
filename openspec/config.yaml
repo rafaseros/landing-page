@@ -1,0 +1,48 @@
+schema: spec-driven
+
+context: |
+  Tech stack: Astro 5.16 + Tailwind CSS 4.1 + TypeScript (strict)
+  Architecture: Component-based (Astro components), single Layout
+  Testing: No test runner detected
+  Style: No linter/formatter configured
+  Site: https://devrafaseros.com
+
+strict_tdd: false
+
+testing:
+  test_runner: null
+  layers:
+    unit: false
+    integration: false
+    e2e: false
+  coverage: null
+  quality:
+    linter: null
+    type_checker: "astro check"
+    formatter: null
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Identify affected components and layouts
+  specs:
+    - Use Given/When/Then format for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Include component hierarchy diagrams
+    - Document architecture decisions with rationale
+  tasks:
+    - Group tasks by phase (infrastructure, components, styling, content)
+    - Use hierarchical numbering (1.1, 1.2, etc.)
+    - Keep tasks small enough to complete in one session
+  apply:
+    - Follow Astro component patterns
+    - Use Tailwind CSS utility classes, no custom CSS unless necessary
+    tdd: false
+    test_command: ""
+  verify:
+    test_command: ""
+    build_command: "npx astro build"
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas

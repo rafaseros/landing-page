@@ -1,0 +1,30 @@
+---
+interface Props {
+  label: string;
+  tier?: 'Expert' | 'Proficient' | 'Familiar';
+  size?: 'sm' | 'md';
+}
+
+const { label, tier, size = 'sm' } = Astro.props;
+
+const tierStyles: Record<string, string> = {
+  Expert: 'bg-accent/15 text-accent border-accent/30',
+  Proficient: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
+  Familiar: 'bg-(--bg-tertiary) text-(--text-secondary) border-(--border)',
+};
+
+const sizeStyles: Record<string, string> = {
+  sm: 'px-2.5 py-1 text-xs',
+  md: 'px-3 py-1.5 text-sm',
+};
+
+const style = tier ? tierStyles[tier] : 'bg-(--bg-tertiary) text-(--text-secondary) border-(--border)';
+---
+
+<span
+  class={`inline-flex items-center font-body font-medium rounded-full border ${style} ${sizeStyles[size]}`}
+  role={tier ? "img" : undefined}
+  aria-label={tier ? `${label} — ${tier}` : undefined}
+>
+  {label}
+</span>

@@ -1,0 +1,29 @@
+---
+import ProjectCard from './ui/ProjectCard.astro';
+import { projects } from '../data/projects';
+---
+
+<section id="proyectos" class="py-20 bg-(--bg-secondary)" aria-labelledby="projects-heading">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <p class="font-body text-accent font-medium mb-2">Mi trabajo</p>
+      <h2 id="projects-heading" class="font-heading text-3xl sm:text-4xl font-bold text-(--text-primary)">
+        Proyectos Destacados
+      </h2>
+      <p class="font-body text-(--text-secondary) mt-4 max-w-2xl mx-auto">
+        Soluciones que he liderado y desarrollado, enfocadas en impacto real y transformación digital en el sector salud.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid lg:grid-cols-2 gap-8">
+      {projects.map((project, idx) => (
+        <div class={`animate-on-scroll fade-in-up stagger-${idx + 1}`}>
+          <ProjectCard project={project} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

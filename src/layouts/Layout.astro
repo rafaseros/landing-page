@@ -1,4 +1,16 @@
 ---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/600.css';
+import '@fontsource/space-grotesk/700.css';
+import SkipToContent from "../components/SkipToContent.astro";
+import { siteMetadata } from '../data/site';
+import { socialLinks } from '../data/social-links';
+
 interface Props {
   title?: string;
   description?: string;
@@ -6,9 +18,9 @@ interface Props {
 }
 
 const {
-  title = "Rafael Gallegos | Tech Lead en Healthtech",
-  description = "Desarrollador con más de 12 años de experiencia. Líder de desarrollo en Clínica Foianini, especializado en transformación digital en el sector salud.",
-  image = "/og-image.png",
+  title = siteMetadata.title,
+  description = siteMetadata.description,
+  image = siteMetadata.ogImage,
 } = Astro.props;
 
 const canonicalURL = new URL(
@@ -58,16 +70,30 @@ const canonicalURL = new URL(
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": siteMetadata.name,
+      "url": siteMetadata.url,
+      "jobTitle": "Tech Lead",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Clínica Foianini"
+      },
+      "sameAs": socialLinks.filter(l => l.href.startsWith("http")).map(l => l.href),
+      "knowsAbout": ["PHP", "Laravel", "Healthtech", "Software Architecture", "Team Leadership", "Docker", "MySQL", "PostgreSQL"]
+    })} />
   </head>
   <body>
+    <!-- Scroll Progress -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-0.5 bg-accent z-[100] transition-none" style="width: 0%"></div>
+    <SkipToContent />
     <slot />
+    <script src="../scripts/scroll-animations.ts"></script>
+    <script src="../scripts/active-nav.ts"></script>
+    <script src="../scripts/mobile-menu.ts"></script>
+    <script src="../scripts/counter.ts"></script>
   </body>
 </html>
 
@@ -101,6 +127,18 @@ const canonicalURL = new URL(
       : "light";
     setTheme(currentTheme === "dark" ? "light" : "dark");
   };
+</script>
+
+<script is:inline>
+  const scrollProgress = document.getElementById('scroll-progress');
+  if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgress.style.width = progress + '%';
+    }, { passive: true });
+  }
 </script>
 
 <style is:global>
