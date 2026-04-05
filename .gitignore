@@ -22,4 +22,4 @@ Thumbs.db
 # testing
 test-results/
 playwright-report/
-coverage/
+coverage/.stitch/

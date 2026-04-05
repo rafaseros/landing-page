@@ -1,126 +1,137 @@
 ---
+import { siteMetadata, highlights } from '../data/site';
 import { socialLinks } from '../data/social-links';
 ---
 
-<section id="hero" class="min-h-screen flex items-center pt-16 relative overflow-hidden">
-  <!-- Decorative background elements -->
-  <div class="absolute top-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-1/4 left-0 w-64 h-64 bg-accent/3 rounded-full blur-3xl"></div>
+<section id="hero" class="relative min-h-screen overflow-hidden hero-glow pt-24">
+  <div class="max-w-7xl mx-auto px-8 py-16 md:py-32 flex flex-col md:flex-row items-center justify-between gap-16">
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-    <div class="grid lg:grid-cols-5 gap-12 items-center">
+    <!-- Left: 60% -->
+    <div class="w-full md:w-3/5 space-y-8">
 
-      <!-- Left column - Content (60%) -->
-      <div class="lg:col-span-3 text-center lg:text-left">
-        <!-- Greeting -->
-        <p
-          class="font-body text-accent font-medium mb-4 text-lg animate-fade-in-up opacity-0"
-          style="animation-delay: 100ms; animation-fill-mode: forwards;"
-        >
-          ¡Hola! Soy
-        </p>
+      <!-- Overline label -->
+      <span
+        class="text-[var(--color-primary)] font-bold tracking-[0.1em] text-sm uppercase animate-fade-in-up opacity-0"
+        style="animation-delay: 100ms; animation-fill-mode: forwards;"
+      >
+        TECH LEAD & SOFTWARE ARCHITECT
+      </span>
 
-        <!-- Name -->
-        <h1
-          class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-(--text-primary) animate-fade-in-up opacity-0"
-          style="animation-delay: 200ms; animation-fill-mode: forwards;"
-        >
-          Rafael Gallegos
-        </h1>
+      <!-- Name split -->
+      <h1
+        class="text-6xl md:text-8xl font-[var(--font-heading)] font-bold tracking-tight leading-[0.9] animate-fade-in-up opacity-0"
+        style="animation-delay: 200ms; animation-fill-mode: forwards;"
+      >
+        RAFAEL<br />
+        <span class="text-[var(--color-primary-container)]">GALLEGOS</span>
+      </h1>
 
-        <!-- Title -->
-        <h2
-          class="font-heading text-xl sm:text-2xl md:text-3xl font-semibold text-(--text-secondary) mb-8 animate-fade-in-up opacity-0"
-          style="animation-delay: 300ms; animation-fill-mode: forwards;"
-        >
-          Tech Lead en <span class="text-accent">Healthtech</span>
-        </h2>
-
-        <!-- Description -->
-        <p
-          class="font-body text-(--text-secondary) text-lg max-w-2xl mb-10 leading-relaxed animate-fade-in-up opacity-0 lg:mx-0 mx-auto"
-          style="animation-delay: 400ms; animation-fill-mode: forwards;"
-        >
-          Desarrollador con más de <span class="text-(--text-primary) font-medium">12 años de experiencia</span> liderando equipos y transformando procesos en el sector salud. Actualmente dirijo el equipo de desarrollo en <span class="text-(--text-primary) font-medium">Clínica Foianini</span>, Bolivia.
-        </p>
-
-        <!-- CTA Buttons -->
-        <div
-          class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10 animate-fade-in-up opacity-0"
-          style="animation-delay: 500ms; animation-fill-mode: forwards;"
-        >
-          <a
-            href="#contacto"
-            class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-white font-body font-semibold px-8 py-4 rounded-lg transition-all hover:scale-105"
-          >
-            Contáctame
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-          <a
-            href="#proyectos"
-            class="inline-flex items-center justify-center gap-2 bg-(--bg-secondary) hover:bg-(--bg-tertiary) text-(--text-primary) font-body font-semibold px-8 py-4 rounded-lg border border-(--border) transition-colors"
-          >
-            Ver proyectos
-          </a>
-        </div>
-
-        <!-- Social Links -->
-        <div
-          class="flex justify-center lg:justify-start gap-4 animate-fade-in-up opacity-0"
-          style="animation-delay: 600ms; animation-fill-mode: forwards;"
-        >
-          {socialLinks.map((link) => (
-            <a
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="p-3 rounded-lg bg-(--bg-secondary) border border-(--border) text-(--text-secondary) hover:text-accent hover:border-accent transition-all hover:scale-110"
-              aria-label={link.name}
-            >
-              <Fragment set:html={link.icon} />
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <!-- Right column - Avatar (40%) -->
-      <div
-        class="lg:col-span-2 flex justify-center animate-fade-in opacity-0"
+      <!-- Subtitle -->
+      <p
+        class="text-xl md:text-2xl text-[var(--color-on-surface-variant)] animate-fade-in-up opacity-0"
         style="animation-delay: 300ms; animation-fill-mode: forwards;"
       >
-        <div class="relative">
-          <!-- Decorative rings -->
-          <div class="absolute inset-0 rounded-full border-2 border-accent/20 scale-110"></div>
-          <div class="absolute inset-0 rounded-full border border-accent/10 scale-125"></div>
+        Tech Lead · Software Architect
+      </p>
 
-          <!-- Dots decoration -->
-          <div class="absolute -top-4 -right-4 w-8 h-8 bg-accent/20 rounded-full"></div>
-          <div class="absolute -bottom-2 -left-6 w-6 h-6 bg-accent/15 rounded-full"></div>
-          <div class="absolute top-1/2 -right-8 w-4 h-4 bg-accent/10 rounded-full"></div>
+      <!-- Tagline -->
+      <p
+        class="text-[var(--color-on-surface-variant)] text-lg leading-relaxed max-w-xl animate-fade-in-up opacity-0"
+        style="animation-delay: 400ms; animation-fill-mode: forwards;"
+      >
+        {siteMetadata.description}
+      </p>
 
-          <!-- Avatar circle -->
-          <div class="w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-accent/20 via-accent/10 to-transparent border-2 border-accent/30 flex items-center justify-center relative">
-            <span class="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold text-accent/80 select-none">
+      <!-- CTA Buttons -->
+      <div
+        class="flex flex-col sm:flex-row gap-4 animate-fade-in-up opacity-0"
+        style="animation-delay: 500ms; animation-fill-mode: forwards;"
+      >
+        <a
+          href="#proyectos"
+          class="inline-flex items-center justify-center bg-[var(--color-primary-container)] text-[var(--color-on-primary-container)] px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_20px_rgba(220,38,38,0.4)] transition-all"
+        >
+          Ver Proyectos
+        </a>
+        <a
+          href="/cv"
+          class="ghost-border inline-flex items-center justify-center bg-[var(--color-surface-container-low)]/50 hover:bg-[var(--color-surface-container-high)] text-[var(--color-on-surface)] px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm transition-all"
+        >
+          Descargar CV
+        </a>
+      </div>
+
+      <!-- Social Links -->
+      <div
+        class="flex gap-4 animate-fade-in-up opacity-0"
+        style="animation-delay: 600ms; animation-fill-mode: forwards;"
+      >
+        {socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-3 rounded-lg bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-all hover:scale-110"
+            aria-label={link.name}
+          >
+            <Fragment set:html={link.icon} />
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Right: 40% Avatar -->
+    <div
+      class="w-full md:w-2/5 flex justify-center animate-fade-in opacity-0"
+      style="animation-delay: 300ms; animation-fill-mode: forwards;"
+    >
+      <div class="relative group">
+        <!-- Avatar container -->
+        <div class="relative avatar-glow">
+          <div class="w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-[var(--color-surface-container-highest)] bg-gradient-to-br from-[var(--color-surface-container-high)] via-[var(--color-surface-container)] to-[var(--color-surface-container-lowest)] flex items-center justify-center">
+            <span class="font-[var(--font-heading)] text-6xl md:text-8xl font-bold text-[var(--color-primary)] select-none">
               RG
             </span>
 
-            <!-- Status indicator -->
-            <div class="absolute bottom-6 right-6 flex items-center gap-2 bg-(--bg-primary)/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-(--border) shadow-lg">
+            <!-- Available badge -->
+            <div class="absolute bottom-6 right-6 flex items-center gap-2 bg-[var(--color-surface-container-lowest)]/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-[var(--color-outline-variant)] shadow-lg">
               <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
-              <span class="font-body text-xs text-(--text-secondary) font-medium">Disponible</span>
+              <span class="font-[var(--font-body)] text-xs text-[var(--color-on-surface-variant)] font-medium">Disponible</span>
             </div>
           </div>
         </div>
+
+        <!-- Decorative red blur -->
+        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-[var(--color-primary-container)]/20 blur-3xl rounded-full pointer-events-none"></div>
+        <!-- Decorative blue blur -->
+        <div class="absolute -top-6 -left-6 w-32 h-32 bg-[var(--color-tertiary-container)]/15 blur-3xl rounded-full pointer-events-none"></div>
       </div>
+    </div>
+  </div>
+
+  <!-- Stats Row -->
+  <div
+    class="max-w-7xl mx-auto px-8 pb-20 animate-fade-in-up opacity-0"
+    style="animation-delay: 700ms; animation-fill-mode: forwards;"
+  >
+    <div class="glass-card grid grid-cols-2 md:grid-cols-4 py-10 px-8 rounded-[2rem]">
+      {highlights.map((item, i) => (
+        <div class:list={["flex flex-col gap-1", i > 0 ? "border-l border-black/10 dark:border-white/10 pl-8" : ""]}>
+          <span class="text-[var(--color-primary)] font-[var(--font-heading)] font-bold text-3xl md:text-4xl">
+            {item.displayValue}
+          </span>
+          <span class="text-[var(--color-on-surface-variant)] text-sm uppercase tracking-widest font-semibold">
+            {item.label}
+          </span>
+        </div>
+      ))}
     </div>
   </div>
 
   <!-- Scroll indicator -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
     <svg
-      class="w-6 h-6 text-(--text-secondary)"
+      class="w-6 h-6 text-[var(--color-on-surface-variant)]"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -129,7 +140,8 @@ import { socialLinks } from '../data/social-links';
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="2"
-        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+      ></path>
     </svg>
   </div>
 </section>

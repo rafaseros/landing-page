@@ -1,45 +1,59 @@
 ---
-import Badge from './ui/Badge.astro';
 import { technologyCategories } from '../data/technologies';
 ---
 
-<section id="tecnologias" class="py-20 bg-(--bg-secondary)">
+<section id="tecnologias" class="py-24 bg-[var(--color-surface-container-low)]">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Header -->
-    <div class="text-center mb-12">
-      <p class="font-body text-accent font-medium mb-2">Mis herramientas</p>
-      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-(--text-primary)">
-        Stack Tecnológico
+    <div class="mb-12 animate-on-scroll fade-in-up">
+      <p class="text-xs font-bold tracking-widest text-[var(--color-primary-container)] uppercase mb-3">
+        STACK TÉCNICO
+      </p>
+      <h2 class="font-[var(--font-heading)] text-4xl sm:text-5xl font-bold text-[var(--color-on-surface)]">
+        Tecnologías
       </h2>
     </div>
 
-    <!-- Tier Legend -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12">
+    <!-- Skill level legend -->
+    <div class="flex flex-wrap gap-6 mb-12 animate-on-scroll fade-in-up">
       <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-accent/30 border border-accent/50"></span>
-        <span class="font-body text-sm text-(--text-secondary)">Expert</span>
+        <span class="w-3 h-3 rounded-full bg-[var(--color-primary-container)]"></span>
+        <span class="text-xs font-bold tracking-wide text-[var(--color-on-surface-variant)] uppercase">Expert</span>
       </div>
       <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-blue-500/30 border border-blue-500/50"></span>
-        <span class="font-body text-sm text-(--text-secondary)">Proficient</span>
+        <span class="w-3 h-3 rounded-full bg-slate-400"></span>
+        <span class="text-xs font-bold tracking-wide text-[var(--color-on-surface-variant)] uppercase">Proficient</span>
       </div>
       <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-(--bg-tertiary) border border-(--border)"></span>
-        <span class="font-body text-sm text-(--text-secondary)">Familiar</span>
+        <span class="w-3 h-3 rounded-full bg-slate-600"></span>
+        <span class="text-xs font-bold tracking-wide text-[var(--color-on-surface-variant)] uppercase">Familiar</span>
       </div>
     </div>
 
     <!-- Categories Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {technologyCategories.map((category, idx) => (
-        <div class={`animate-on-scroll scale-in stagger-${idx + 1} bg-(--bg-primary) p-6 rounded-xl border border-(--border) hover:border-accent/50 transition-all duration-300 hover:-translate-y-1`}>
-          <h3 class="font-heading text-lg font-bold text-(--text-primary) mb-4 pb-2 border-b border-(--border)">
+        <div class={`animate-on-scroll scale-in stagger-${idx + 1} bg-[var(--color-surface-container)] ghost-border rounded-xl p-6 hover:border-[var(--color-primary-container)]/30 transition-all duration-300`}>
+          <h3 class="font-[var(--font-heading)] font-bold text-lg mb-4 text-[var(--color-on-surface)]">
             {category.name}
           </h3>
-          <div class="flex flex-wrap gap-2">
+          <div class="space-y-2">
             {category.techs.map((tech) => (
-              <Badge label={tech.name} tier={tech.level} size="md" />
+              <div class="flex items-center gap-3">
+                <span
+                  class={`w-2.5 h-2.5 rounded-full shrink-0 ${
+                    tech.level === 'Expert'
+                      ? 'bg-[var(--color-primary-container)]'
+                      : tech.level === 'Proficient'
+                      ? 'bg-slate-400'
+                      : 'bg-slate-600'
+                  }`}
+                ></span>
+                <span class="text-sm text-[var(--color-on-surface-variant)]">
+                  {tech.name}
+                </span>
+              </div>
             ))}
           </div>
         </div>

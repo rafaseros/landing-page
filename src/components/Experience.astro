@@ -2,91 +2,145 @@
 import { experiences } from '../data/experience';
 ---
 
-<section id="experiencia" class="py-20 bg-(--bg-primary)">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <!-- Encabezado -->
-    <div class="text-center mb-16">
-      <p class="font-body text-accent font-medium mb-2">Mi trayectoria</p>
-      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-(--text-primary)">
-        Experiencia Profesional
-      </h2>
-    </div>
+<section id="experiencia" class="py-32 px-8">
 
-    <!-- Timeline -->
-    <div class="relative">
-      
-      <!-- Línea vertical -->
-      <div class="absolute left-0 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-(--border)"></div>
+  <!-- Section header -->
+  <div class="text-center space-y-4 mb-16">
+    <span class="text-sm font-bold uppercase tracking-[0.2em] text-[var(--color-primary-container)]">
+      El Recorrido
+    </span>
+    <h2 class="text-4xl font-[var(--font-heading)] font-bold tracking-tight">
+      Línea de Experiencia
+    </h2>
+  </div>
 
-      <!-- Items -->
-      <div class="space-y-12">
-        {experiences.map((exp, index) => (
-          <div class={`relative flex flex-col md:flex-row gap-8 animate-on-scroll ${index % 2 === 0 ? 'md:flex-row-reverse fade-in-right' : 'fade-in-left'}`}>
-            
-            <!-- Dot -->
-            <div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-accent border-4 border-(--bg-primary)"></div>
-            
-            <!-- Content -->
-            <div class={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'} pl-8 md:pl-0`}>
-              <div class={`bg-(--bg-secondary) p-6 rounded-xl border border-(--border) hover:border-accent transition-colors ${index % 2 === 0 ? 'md:ml-auto' : ''}`}>
-                
-                <!-- Header -->
-                <div class={`flex flex-wrap items-center gap-2 mb-2 ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
-                  {exp.current && (
-                    <span class="px-2 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full">
-                      Actual
-                    </span>
-                  )}
-                  <span class="text-sm text-(--text-secondary) font-body">
+  <!-- Timeline -->
+  <div class="relative max-w-4xl mx-auto">
+
+    <!-- Vertical center line -->
+    <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 timeline-line transform md:-translate-x-1/2 bg-[var(--color-outline-variant)]/30"></div>
+
+    <div class="space-y-12">
+      {experiences.map((exp, index) => {
+        const isEven = index % 2 === 0;
+        return (
+          <div class={`relative flex items-start gap-8 animate-on-scroll ${isEven ? 'fade-in-left' : 'fade-in-right'}`}>
+
+            <!-- MOBILE: left-pinned dot -->
+            <!-- DESKTOP: center dot -->
+            <div class={`
+              absolute left-4 md:left-1/2 top-6
+              transform -translate-x-1/2
+              z-10
+              ${exp.current
+                ? 'w-4 h-4 bg-[var(--color-primary-container)] rounded-full pulse-dot'
+                : 'w-4 h-4 bg-slate-700 rounded-full border-2 border-[var(--color-primary-container)]/50'
+              }
+            `}></div>
+
+            {/* Desktop: even → date left + card right */}
+            {/* Desktop: odd  → card left + date right */}
+
+            {isEven ? (
+              <>
+                {/* Date — left side (desktop) / hidden on mobile */}
+                <div class="hidden md:flex md:w-1/2 md:justify-end md:pr-12 pt-4">
+                  <span class="text-[var(--color-on-surface-variant)] font-[var(--font-heading)] font-bold text-xl text-right">
                     {exp.period}
                   </span>
                 </div>
 
-                <!-- Title -->
-                <h3 class="font-heading text-xl font-bold text-(--text-primary) mb-1">
-                  {exp.title}
-                </h3>
-                
-                <p class="font-body text-accent font-medium mb-3">
-                  {exp.company} <span class="text-(--text-secondary) font-normal">• {exp.location}</span>
-                </p>
-
-                <!-- Description -->
-                <p class="font-body text-(--text-secondary) text-sm mb-4">
-                  {exp.description}
-                </p>
-
-                <!-- Achievements -->
-                {exp.achievements.length > 0 && (
-                  <ul class={`space-y-1 mb-4 ${index % 2 === 0 ? 'md:text-left' : ''}`}>
-                    {exp.achievements.map((achievement) => (
-                      <li class="font-body text-sm text-(--text-secondary) flex items-start gap-2">
-                        <span class="text-accent mt-1">•</span>
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                <!-- Tech -->
-                <div class={`flex flex-wrap gap-2 ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
-                  {exp.tech.map((t) => (
-                    <span class="px-2 py-1 text-xs font-body bg-(--bg-primary) text-(--text-secondary) rounded border border-(--border)">
-                      {t}
-                    </span>
-                  ))}
+                {/* Card — right side (desktop) / full width indented (mobile) */}
+                <div class="ml-10 md:ml-0 md:w-1/2 md:pl-12">
+                  {/* Period visible on mobile */}
+                  <p class="md:hidden text-[var(--color-on-surface-variant)] font-bold text-sm mb-2">{exp.period}</p>
+                  <div class="bg-[var(--color-surface-container)] ghost-border p-6 rounded-xl hover:border-[var(--color-primary-container)]/30 transition-all duration-300">
+                    {exp.current && (
+                      <span class="inline-block mb-2 px-2 py-0.5 text-xs font-bold uppercase tracking-wider bg-[var(--color-primary-container)]/10 text-[var(--color-primary-container)] rounded-full">
+                        Actual
+                      </span>
+                    )}
+                    <h3 class="text-xl font-bold font-[var(--font-heading)] mb-1">{exp.title}</h3>
+                    <p class="text-[var(--color-primary-container)] font-bold mb-3">
+                      {exp.company}
+                      <span class="text-[var(--color-on-surface)]/50 font-normal"> · {exp.location}</span>
+                    </p>
+                    <p class="text-[var(--color-on-surface)]/70 text-sm leading-relaxed mb-4">
+                      {exp.description}
+                    </p>
+                    {exp.achievements.length > 0 && (
+                      <ul class="space-y-1 mb-4">
+                        {exp.achievements.map((a) => (
+                          <li class="text-sm text-[var(--color-on-surface)]/60 flex items-start gap-2">
+                            <span class="text-[var(--color-primary-container)] mt-0.5 shrink-0">▸</span>
+                            <span>{a}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    <div class="flex flex-wrap gap-2">
+                      {exp.tech.map((t) => (
+                        <span class="px-2 py-0.5 text-xs bg-[var(--color-surface-container-high)] ghost-border rounded text-[var(--color-on-surface-variant)]">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                {/* Card — left side (desktop) / full width indented (mobile) */}
+                <div class="ml-10 md:ml-0 md:w-1/2 md:pr-12 md:order-first">
+                  {/* Period visible on mobile */}
+                  <p class="md:hidden text-[var(--color-on-surface-variant)] font-bold text-sm mb-2">{exp.period}</p>
+                  <div class="bg-[var(--color-surface-container)] ghost-border p-6 rounded-xl hover:border-[var(--color-primary-container)]/30 transition-all duration-300">
+                    {exp.current && (
+                      <span class="inline-block mb-2 px-2 py-0.5 text-xs font-bold uppercase tracking-wider bg-[var(--color-primary-container)]/10 text-[var(--color-primary-container)] rounded-full">
+                        Actual
+                      </span>
+                    )}
+                    <h3 class="text-xl font-bold font-[var(--font-heading)] mb-1">{exp.title}</h3>
+                    <p class="text-[var(--color-primary-container)] font-bold mb-3">
+                      {exp.company}
+                      <span class="text-[var(--color-on-surface)]/50 font-normal"> · {exp.location}</span>
+                    </p>
+                    <p class="text-[var(--color-on-surface)]/70 text-sm leading-relaxed mb-4">
+                      {exp.description}
+                    </p>
+                    {exp.achievements.length > 0 && (
+                      <ul class="space-y-1 mb-4">
+                        {exp.achievements.map((a) => (
+                          <li class="text-sm text-[var(--color-on-surface)]/60 flex items-start gap-2">
+                            <span class="text-[var(--color-primary-container)] mt-0.5 shrink-0">▸</span>
+                            <span>{a}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    <div class="flex flex-wrap gap-2">
+                      {exp.tech.map((t) => (
+                        <span class="px-2 py-0.5 text-xs bg-[var(--color-surface-container-high)] ghost-border rounded text-[var(--color-on-surface-variant)]">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-              </div>
-            </div>
+                {/* Date — right side (desktop) / hidden on mobile */}
+                <div class="hidden md:flex md:w-1/2 md:justify-start md:pl-12 pt-4 md:order-last">
+                  <span class="text-[var(--color-on-surface-variant)] font-[var(--font-heading)] font-bold text-xl">
+                    {exp.period}
+                  </span>
+                </div>
+              </>
+            )}
 
-            <!-- Spacer for alternating layout -->
-            <div class="hidden md:block md:w-1/2"></div>
           </div>
-        ))}
-      </div>
-
+        );
+      })}
     </div>
+
   </div>
 </section>

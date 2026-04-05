@@ -29,19 +29,54 @@
   --color-light-border: #E2E8F0;
 
   /* Dark mode - fondos */
-  --color-dark-bg: #0F172A;
-  --color-dark-bg-secondary: #1E293B;
-  --color-dark-bg-tertiary: #334155;
+  --color-dark-bg: #0b1326;
+  --color-dark-bg-secondary: #131b2e;
+  --color-dark-bg-tertiary: #222a3d;
 
   /* Dark mode - textos */
-  --color-dark-text: #F8FAFC;
-  --color-dark-text-secondary: #94A3B8;
+  --color-dark-text: #dae2fd;
+  --color-dark-text-secondary: #e6bdb8;
 
   /* Dark mode - bordes */
-  --color-dark-border: #475569;
+  --color-dark-border: #5c403c;
+
+  /* Titanium Crimson — Surface hierarchy */
+  --color-surface: #0b1326;
+  --color-surface-dim: #0b1326;
+  --color-surface-bright: #31394d;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+
+  /* Primary */
+  --color-primary: #ffb4ab;
+  --color-primary-container: #dc2626;
+  --color-on-primary: #690005;
+  --color-on-primary-container: #fff6f5;
+
+  /* Secondary */
+  --color-secondary: #ffb4ab;
+  --color-secondary-container: #89231e;
+  --color-on-secondary-container: #ff9f94;
+
+  /* Tertiary (blue for code/tech highlights) */
+  --color-tertiary: #90cdff;
+  --color-tertiary-container: #0078b2;
+
+  /* Text/Surface */
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #e6bdb8;
+  --color-on-background: #dae2fd;
+
+  /* Outline */
+  --color-outline: #ac8884;
+  --color-outline-variant: #5c403c;
 }
 
 /* Variables para cambio dinámico de tema */
+/* Light mode: override Titanium Crimson tokens for bright backgrounds */
 :root {
   --bg-primary: var(--color-light-bg);
   --bg-secondary: var(--color-light-bg-secondary);
@@ -49,15 +84,84 @@
   --text-primary: var(--color-light-text);
   --text-secondary: var(--color-light-text-secondary);
   --border: var(--color-light-border);
+
+  /* Surface hierarchy — light equivalents */
+  --color-surface: #FAFBFF;
+  --color-surface-dim: #D9DBE4;
+  --color-surface-bright: #FAFBFF;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #F4F5FB;
+  --color-surface-container: #ECEEF5;
+  --color-surface-container-high: #E4E6EF;
+  --color-surface-container-highest: #DCDEE8;
+
+  /* Primary — adjusted for light backgrounds */
+  --color-primary: #B91C1C;
+  --color-primary-container: #DC2626;
+  --color-on-primary: #FFFFFF;
+  --color-on-primary-container: #FFFFFF;
+
+  /* Secondary */
+  --color-secondary: #775653;
+  --color-secondary-container: #FFDAD6;
+  --color-on-secondary-container: #2C1513;
+
+  /* Tertiary — darker blue for light bg contrast */
+  --color-tertiary: #00658E;
+  --color-tertiary-container: #C5E7FF;
+
+  /* Text/Surface — dark text on light bg */
+  --color-on-surface: #1A1C25;
+  --color-on-surface-variant: #44474E;
+  --color-on-background: #1A1C25;
+
+  /* Outline */
+  --color-outline: #74777F;
+  --color-outline-variant: #C4C6D0;
 }
 
+/* Dark mode: restore Titanium Crimson dark values */
 .dark {
-  --bg-primary: var(--color-dark-bg);
-  --bg-secondary: var(--color-dark-bg-secondary);
-  --bg-tertiary: var(--color-dark-bg-tertiary);
-  --text-primary: var(--color-dark-text);
-  --text-secondary: var(--color-dark-text-secondary);
-  --border: var(--color-dark-border);
+  --bg-primary: #0b1326;
+  --bg-secondary: #131b2e;
+  --bg-tertiary: #222a3d;
+  --text-primary: #dae2fd;
+  --text-secondary: #e6bdb8;
+  --border: #5c403c;
+
+  /* Surface hierarchy — Titanium Crimson dark */
+  --color-surface: #0b1326;
+  --color-surface-dim: #0b1326;
+  --color-surface-bright: #31394d;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+
+  /* Primary */
+  --color-primary: #ffb4ab;
+  --color-primary-container: #dc2626;
+  --color-on-primary: #690005;
+  --color-on-primary-container: #fff6f5;
+
+  /* Secondary */
+  --color-secondary: #ffb4ab;
+  --color-secondary-container: #89231e;
+  --color-on-secondary-container: #ff9f94;
+
+  /* Tertiary */
+  --color-tertiary: #90cdff;
+  --color-tertiary-container: #0078b2;
+
+  /* Text/Surface */
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #e6bdb8;
+  --color-on-background: #dae2fd;
+
+  /* Outline */
+  --color-outline: #ac8884;
+  --color-outline-variant: #5c403c;
 }
 
 /* Estilos base */
@@ -213,6 +317,103 @@ h1, h2, h3, h4, h5, h6 {
 /* Smooth scroll offset for sticky header */
 section[id] {
   scroll-margin-top: 5rem;
+}
+
+/* Titanium Crimson — Signature effects (theme-aware) */
+.hero-glow {
+  background-image: radial-gradient(circle at top right, rgba(220, 38, 38, 0.08) 0%, transparent 50%);
+}
+
+.dark .hero-glow {
+  background-image: radial-gradient(circle at top right, rgba(220, 38, 38, 0.15) 0%, transparent 50%);
+}
+
+.glass-card {
+  background: var(--color-surface-container);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--color-outline-variant);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .glass-card {
+  background: rgba(23, 31, 51, 0.4);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.ghost-border {
+  border: 1px solid var(--color-outline-variant);
+}
+
+.dark .ghost-border {
+  border-color: rgba(92, 64, 60, 0.15);
+}
+
+/* Avatar glow effect */
+.avatar-glow::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 9999px;
+  border: 2px solid var(--color-primary-container);
+  opacity: 0.3;
+  filter: blur(8px);
+}
+
+/* Timeline effects */
+.timeline-line {
+  background: linear-gradient(to bottom, var(--color-primary-container), rgba(220, 38, 38, 0.5), transparent);
+}
+
+.pulse-dot {
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+/* Code snippet window */
+.code-window {
+  background: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .code-window {
+  border-color: rgba(92, 64, 60, 0.15);
+}
+
+/* Gradient separator */
+.gradient-separator {
+  background: linear-gradient(to right, transparent, rgba(220, 38, 38, 0.2), transparent);
+  height: 1px;
+}
+
+/* Talk card with left border */
+.talk-card {
+  background: var(--color-surface-container);
+  border-left: 4px solid var(--color-primary-container);
+  transition: background-color 0.3s ease;
+}
+
+.dark .talk-card {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.talk-card:hover {
+  background: var(--color-surface-container-high);
+}
+
+.dark .talk-card:hover {
+  background: rgba(30, 41, 59, 0.5);
+}
+
+/* Form input focus glow */
+.input-glow:focus {
+  border-color: var(--color-primary-container);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
 }
 
 /* Accessibility: Reduced motion */

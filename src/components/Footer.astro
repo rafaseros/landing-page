@@ -1,79 +1,45 @@
 ---
 import { socialLinks } from '../data/social-links';
-import { navLinks } from '../data/nav-links';
 
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-(--bg-primary) border-t border-(--border)">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid md:grid-cols-3 gap-8 mb-8">
-      <!-- Logo y descripción -->
+<footer class="bg-[var(--color-surface-container-lowest)] py-12 px-8">
+  <!-- Gradient separator -->
+  <div class="gradient-separator mb-12"></div>
+
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+
+      <!-- Logo left -->
       <div>
-        <a href="/" class="font-heading font-bold text-2xl text-accent">
+        <a href="/" class="font-[var(--font-heading)] font-bold text-[var(--color-on-surface)] uppercase tracking-tighter text-xl hover:text-[var(--color-primary)] transition-colors">
           devrafaseros
         </a>
-        <p class="font-body text-(--text-secondary) mt-4 text-sm">
-          Tech Lead especializado en desarrollo de soluciones para el sector
-          salud. +12 años de experiencia transformando ideas en productos
-          digitales.
+      </div>
+
+      <!-- Copyright center -->
+      <div class="order-last md:order-none">
+        <p class="text-xs text-[var(--color-on-surface-variant)] text-center">
+          &copy; {currentYear} Rafael Gallegos &mdash; Todos los derechos reservados
         </p>
       </div>
 
-      <!-- Links de navegación -->
-      <div>
-        <h4 class="font-heading font-bold text-(--text-primary) mb-4">
-          Navegación
-        </h4>
-        <ul class="space-y-2">
-          {
-            navLinks.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="font-body text-sm text-(--text-secondary) hover:text-accent transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+      <!-- Social icons right -->
+      <div class="flex items-center gap-4">
+        {socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={link.name}
+            class="text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)] transition-colors w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[var(--color-surface-container)] transition-all"
+          >
+            <Fragment set:html={link.icon} />
+          </a>
+        ))}
       </div>
 
-      <!-- Redes sociales -->
-      <div>
-        <h4 class="font-heading font-bold text-(--text-primary) mb-4">
-          Conecta conmigo
-        </h4>
-        <div class="flex gap-3">
-          {
-            socialLinks.map((link) => (
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-10 h-10 flex items-center justify-center rounded-lg bg-(--bg-secondary) border border-(--border) text-(--text-secondary) hover:text-accent hover:border-accent transition-colors"
-                aria-label={link.name}
-              >
-                <Fragment set:html={link.icon} />
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-
-    <!-- Copyright -->
-    <div
-      class="pt-8 border-t border-(--border) flex flex-col sm:flex-row justify-between items-center gap-4"
-    >
-      <p class="font-body text-sm text-(--text-secondary)">
-        © {currentYear} Rafael Gallegos. Todos los derechos reservados.
-      </p>
-      <p class="font-body text-sm text-(--text-secondary)">
-        Hecho con <span class="text-accent">♥</span> en Bolivia
-      </p>
     </div>
   </div>
 </footer>

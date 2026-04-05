@@ -1,74 +1,98 @@
 ---
-import { highlights } from '../data/site';
 ---
 
-<section id="sobre-mi" class="py-20 bg-(--bg-secondary)">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Encabezado -->
-    <div class="text-center mb-16">
-      <p class="font-body text-accent font-medium mb-2">Conóceme</p>
-      <h2
-        class="font-heading text-3xl sm:text-4xl font-bold text-(--text-primary)"
-      >
-        Sobre mí
-      </h2>
-    </div>
+<section id="sobre-mi" class="py-32 px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Texto -->
-      <div class="space-y-6 animate-on-scroll fade-in-left">
-        <p class="font-body text-(--text-secondary) text-lg leading-relaxed">
-          Soy un desarrollador con más de <span
-            class="text-(--text-primary) font-medium"
-            >12 años de experiencia</span
-          > en la industria tecnológica. He trabajado en diversos sectores incluyendo
-          agro, fintech, real estate y salud.
-        </p>
+      <!-- LEFT COLUMN: Text -->
+      <div class="space-y-8 animate-on-scroll fade-in-left">
+        <!-- Overline -->
+        <span class="text-sm font-bold uppercase tracking-[0.2em] text-[var(--color-primary-container)]">
+          El Arquitecto
+        </span>
 
-        <p class="font-body text-(--text-secondary) text-lg leading-relaxed">
-          Actualmente lidero el equipo de desarrollo en <span
-            class="text-(--text-primary) font-medium">Clínica Foianini</span
-          >, una de las instituciones de salud más importantes de Bolivia.
-          Gestiono un equipo de 7 personas entre desarrolladores y soporte IT,
-          reportando directamente a gerencias.
-        </p>
+        <!-- Heading -->
+        <h2 class="text-5xl font-[var(--font-heading)] font-bold tracking-tight leading-tight">
+          Construyendo Sistemas Resilientes a Través de la
+          <span class="text-[var(--color-primary-container)]"> Ingeniería Estratégica.</span>
+        </h2>
 
-        <p class="font-body text-(--text-secondary) text-lg leading-relaxed">
-          Mi enfoque está en crear soluciones que impacten directamente la <span
-            class="text-accent font-medium">experiencia del paciente</span
-          > y la <span class="text-accent font-medium"
-            >eficiencia operativa</span
-          >. He implementado sistemas de autoagendamiento, integraciones con
-          aseguradoras, y modernizado infraestructura crítica.
-        </p>
+        <!-- Bio paragraphs -->
+        <div class="space-y-4">
+          <p class="text-[var(--color-on-surface)]/80 text-lg leading-relaxed">
+            Con más de 12 años en la industria, mi obsesión es la
+            <strong class="text-[var(--color-on-surface)]">Clean Architecture</strong>: sistemas
+            que sobreviven al tiempo porque están construidos sobre fundamentos sólidos, no sobre
+            modas pasajeras. Cada decisión de diseño es una inversión a largo plazo.
+          </p>
+          <p class="text-[var(--color-on-surface)]/80 text-lg leading-relaxed">
+            Lidero equipos donde el
+            <strong class="text-[var(--color-on-surface)]">testing no es opcional</strong> y la
+            arquitectura se discute antes de escribir la primera línea. Actualmente dirijo el
+            desarrollo en Clínica Foianini, transformando la experiencia del paciente a través
+            de ingeniería estratégica.
+          </p>
+        </div>
 
-        <p class="font-body text-(--text-secondary) text-lg leading-relaxed">
-          Apasionado por la innovación tecnológica, actualmente exploro
-          aplicaciones de <span class="text-(--text-primary) font-medium"
-            >inteligencia artificial</span
-          > en el sector salud y desarrollo de productos SaaS.
-        </p>
+        <!-- Pill badges -->
+        <div class="flex flex-wrap gap-3 pt-2">
+          {[
+            "Clean Architecture",
+            "Testing Advocate",
+            "Team Builder",
+            "Speaker",
+            "GDE",
+          ].map((badge) => (
+            <span class="px-4 py-1.5 bg-[var(--color-surface-container-high)] ghost-border rounded-full text-xs font-bold uppercase tracking-wider text-[var(--color-on-surface-variant)]">
+              {badge}
+            </span>
+          ))}
+        </div>
       </div>
 
-      <!-- Stats -->
-      <div class="grid grid-cols-2 gap-6 animate-on-scroll">
-        {
-          highlights.map((item) => (
-            <div class="bg-(--bg-primary) p-6 rounded-xl border border-(--border) text-center hover:border-accent transition-colors">
-              <p
-                class="font-heading text-4xl sm:text-5xl font-bold text-accent mb-2"
-                data-counter-target={String(item.numericValue)}
-                data-counter-suffix={item.suffix || ''}
-              >
-                0
-              </p>
-              <p class="font-body text-(--text-secondary) text-sm">
-                {item.label}
-              </p>
+      <!-- RIGHT COLUMN: Decorative code window -->
+      <div class="animate-on-scroll fade-in-right">
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-900 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+          <div class="code-window relative rounded-xl overflow-hidden shadow-2xl">
+
+            <!-- Window chrome -->
+            <div class="flex items-center gap-2 px-4 py-3 bg-[var(--color-surface-container-high)]/50 border-b border-[var(--color-outline-variant)]/10">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              <div class="ml-4 text-xs font-mono text-slate-500">leadership.ts</div>
             </div>
-          ))
-        }
+
+            <!-- Code content -->
+            <div class="p-6 font-mono text-sm leading-relaxed bg-[var(--color-surface-container)]">
+              <div class="space-y-1">
+                <p><span class="text-purple-400">interface</span> <span class="text-yellow-300">TechLead</span> <span class="text-slate-300">{`{`}</span></p>
+                <p class="pl-6"><span class="text-blue-300">name</span><span class="text-slate-300">:</span> <span class="text-green-300">'Rafael Gallegos'</span><span class="text-slate-300">;</span></p>
+                <p class="pl-6"><span class="text-blue-300">experience</span><span class="text-slate-300">:</span> <span class="text-orange-300">12</span><span class="text-slate-500"> // years</span></p>
+                <p class="pl-6"><span class="text-blue-300">philosophy</span><span class="text-slate-300">:</span> <span class="text-green-300">'Clean Architecture'</span><span class="text-slate-300">;</span></p>
+                <p class="pl-6"><span class="text-blue-300">testing</span><span class="text-slate-300">:</span> <span class="text-green-300">'non-negotiable'</span><span class="text-slate-300">;</span></p>
+                <p><span class="text-slate-300">}</span></p>
+                <p class="pt-2"><span class="text-purple-400">type</span> <span class="text-yellow-300">Principles</span> <span class="text-slate-300">=</span></p>
+                <p class="pl-6"><span class="text-slate-300">|</span> <span class="text-green-300">'Solid Foundations'</span></p>
+                <p class="pl-6"><span class="text-slate-300">|</span> <span class="text-green-300">'Team Empowerment'</span></p>
+                <p class="pl-6"><span class="text-slate-300">|</span> <span class="text-green-300">'Strategic Delivery'</span><span class="text-slate-300">;</span></p>
+                <p class="pt-2"><span class="text-purple-400">const</span> <span class="text-blue-300">lead</span><span class="text-slate-300">:</span> <span class="text-yellow-300">TechLead</span> <span class="text-slate-300">= {`{`}</span></p>
+                <p class="pl-6"><span class="text-blue-300">name</span><span class="text-slate-300">:</span> <span class="text-green-300">'Rafael Gallegos'</span><span class="text-slate-300">,</span></p>
+                <p class="pl-6"><span class="text-blue-300">experience</span><span class="text-slate-300">:</span> <span class="text-orange-300">12</span><span class="text-slate-300">,</span></p>
+                <p class="pl-6"><span class="text-blue-300">philosophy</span><span class="text-slate-300">:</span> <span class="text-green-300">'Clean Architecture'</span><span class="text-slate-300">,</span></p>
+                <p class="pl-6"><span class="text-blue-300">testing</span><span class="text-slate-300">:</span> <span class="text-green-300">'non-negotiable'</span><span class="text-slate-300">,</span></p>
+                <p><span class="text-slate-300">{`}`};</span></p>
+                <p class="pt-2 text-slate-500">// Currently transforming healthtech</p>
+                <p class="text-slate-500">// @ Clínica Foianini 🏥</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>

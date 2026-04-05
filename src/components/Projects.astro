@@ -1,27 +1,90 @@
 ---
-import ProjectCard from './ui/ProjectCard.astro';
 import { projects } from '../data/projects';
 ---
 
-<section id="proyectos" class="py-20 bg-(--bg-secondary)" aria-labelledby="projects-heading">
+<section id="proyectos" class="py-24 bg-[var(--color-surface-container-low)]" aria-labelledby="projects-heading">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Header -->
-    <div class="text-center mb-16">
-      <p class="font-body text-accent font-medium mb-2">Mi trabajo</p>
-      <h2 id="projects-heading" class="font-heading text-3xl sm:text-4xl font-bold text-(--text-primary)">
-        Proyectos Destacados
-      </h2>
-      <p class="font-body text-(--text-secondary) mt-4 max-w-2xl mx-auto">
-        Soluciones que he liderado y desarrollado, enfocadas en impacto real y transformación digital en el sector salud.
+    <div class="mb-16 animate-on-scroll fade-in-up">
+      <p class="text-xs font-bold tracking-widest text-[var(--color-primary-container)] uppercase mb-3">
+        PROYECTOS DESTACADOS
       </p>
+      <h2 id="projects-heading" class="font-[var(--font-heading)] text-4xl sm:text-5xl font-bold text-[var(--color-on-surface)]">
+        Proyectos
+      </h2>
     </div>
 
     <!-- Projects Grid -->
-    <div class="grid lg:grid-cols-2 gap-8">
+    <div class="space-y-8">
       {projects.map((project, idx) => (
-        <div class={`animate-on-scroll fade-in-up stagger-${idx + 1}`}>
-          <ProjectCard project={project} />
+        <div
+          class={`animate-on-scroll fade-in-up stagger-${idx + 1} ${idx === 0 ? 'col-span-full' : ''}`}
+        >
+          <article
+            class={`glass-card rounded-xl p-8 hover:border-[var(--color-primary-container)]/30 transition-all duration-300 group ${
+              idx === 0 ? 'border-l-4 border-l-[var(--color-primary-container)]' : ''
+            }`}
+          >
+            <div class={idx === 0 ? 'lg:flex lg:gap-12 lg:items-start' : ''}>
+              <!-- Content -->
+              <div class={idx === 0 ? 'lg:flex-1' : ''}>
+                <!-- Role badge + status -->
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="px-3 py-1 bg-[var(--color-surface-container-high)] rounded-full text-xs font-bold text-[var(--color-tertiary)]">
+                    {project.role}
+                  </span>
+                  <span class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-xs text-[var(--color-on-surface-variant)] font-medium">Producción</span>
+                  </span>
+                </div>
+
+                <!-- Title -->
+                <h3 class="text-xl font-bold font-[var(--font-heading)] text-[var(--color-on-surface)] mb-3 group-hover:text-[var(--color-primary)] transition-colors">
+                  {project.title}
+                </h3>
+
+                <!-- Description -->
+                <p class="text-[var(--color-on-surface-variant)] text-sm leading-relaxed mb-5">
+                  {project.summary}
+                </p>
+
+                <!-- Tech badges -->
+                <div class="flex flex-wrap gap-2 mb-5">
+                  {project.tech.map((t) => (
+                    <span class="px-3 py-1 bg-[var(--color-surface-container-high)] rounded-full text-xs font-bold text-[var(--color-tertiary)]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Impact highlight for featured (first) project */}
+              {idx === 0 && (
+                <div class="lg:w-64 mt-6 lg:mt-0 shrink-0">
+                  <div class="glass-card rounded-xl p-6 border border-[var(--color-primary-container)]/20">
+                    <p class="text-xs font-bold tracking-widest text-[var(--color-primary-container)] uppercase mb-2">
+                      IMPACTO
+                    </p>
+                    <p class="text-[var(--color-on-surface)] font-[var(--font-heading)] font-bold text-lg leading-snug">
+                      {project.impact}
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Impact inline for non-featured */}
+            {idx !== 0 && (
+              <div class="flex items-center gap-2 pt-4 border-t border-[var(--color-outline-variant)]/20 mt-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-primary-container)]"></span>
+                <p class="text-xs text-[var(--color-on-surface-variant)] italic">
+                  {project.impact}
+                </p>
+              </div>
+            )}
+          </article>
         </div>
       ))}
     </div>
